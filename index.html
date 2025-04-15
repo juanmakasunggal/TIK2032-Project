@@ -39,5 +39,26 @@
     <footer>
         <p>&copy; 2025 Personal Homepage | Dibuat oleh Juan Makasunggal</p>
     </footer>
+    <script>
+    // Direct typing animation for heading
+    document.addEventListener('DOMContentLoaded', function() {
+        const heading = document.querySelector('h1');
+        if (heading) {
+            const text = heading.textContent;
+            heading.textContent = '';
+            
+            let i = 0;
+            function typeText() {
+                if (i < text.length) {
+                    heading.textContent += text.charAt(i);
+                    i++;
+                    setTimeout(typeText, 50);
+                }
+            }
+            
+            setTimeout(typeText, 500);
+        }
+    });
+</script>
 </body>
 </html>
