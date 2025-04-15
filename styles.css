@@ -1,0 +1,373 @@
+/* Import Google Font untuk kesan vintage */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Roboto:wght@300;400&display=swap');
+
+/* Global Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background: #f4e7d1;
+    color: #5e3b2c;
+    font-family: 'Playfair Display', serif;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+}
+
+/* Vintage texture overlay */
+body::before {
+    content: "";
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('https://www.transparenttextures.com/patterns/old-map.png');
+    opacity: 0.2;
+    z-index: -1;
+}
+
+/* Header Styles */
+header {
+    background: #8b6f47; /* Coklat vintage */
+    color: #fff;
+    padding: 20px;
+    border-bottom: 4px solid #6b4f3d;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+h1 {
+    font-size: 2.8em;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* Navigation Styles */
+nav ul {
+    list-style-type: none;
+    margin-top: 10px;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin: 0 15px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #f5e6ca;
+    font-size: 1.2em;
+    font-weight: bold;
+    padding: 8px 12px;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+nav ul li a:hover {
+    background: #6b4f3d;
+    color: #fff;
+}
+
+/* Main Content */
+main {
+    padding: 30px;
+}
+
+/* Section Styling */
+section {
+    background: rgba(255, 255, 255, 0.7); /* Transparan agar ada efek grainy */
+    padding: 25px;
+    margin: 20px auto;
+    width: 80%;
+    border-radius: 12px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.15);
+}
+
+/* Judul Section */
+h2 {
+    font-size: 2.2em;
+    color: #6b4f3d;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+/* Paragraf */
+p {
+    font-size: 1.1em;
+    line-height: 1.6;
+}
+
+/* Gallery of Photos */
+/* Improved Gallery Styles */
+.gallery-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    margin: 20px auto;
+}
+
+.gallery-item {
+    width: 30%;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-radius: 8px;
+    overflow: hidden;
+    position: relative;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 15px rgba(0,0,0,0.2);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    object-fit: cover;
+    display: block;
+    transition: filter 0.3s ease;
+}
+
+.gallery-item:hover img {
+    filter: brightness(1.1);
+}
+
+/* Add overlay effect */
+.gallery-item::after {
+    content: '🔍';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 2em;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.gallery-item:hover::after {
+    opacity: 0.8;
+}
+
+/* Responsive design */
+@media (max-width: 768px) {
+    .gallery-item {
+        width: 45%;
+    }
+}
+
+@media (max-width: 480px) {
+    .gallery-item {
+        width: 100%;
+        margin-bottom: 15px;
+    }
+    
+    .gallery-item img {
+        height: 200px;
+    }
+}
+
+/* Lightbox styles */
+.lightbox {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.lightbox.show {
+    opacity: 1;
+}
+
+.lightbox img {
+    max-width: 90%;
+    max-height: 85%;
+    border: 2px solid white;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+    transform: scale(0.95);
+    transition: transform 0.3s ease;
+}
+
+.lightbox.show img {
+    transform: scale(1);
+}
+
+.lightbox-close {
+    position: absolute;
+    top: 20px;
+    right: 30px;
+    font-size: 40px;
+    color: white;
+    cursor: pointer;
+    z-index: 1001;
+    transition: transform 0.2s ease;
+}
+
+.lightbox-close:hover {
+    transform: scale(1.2);
+}
+.photo-gallery {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 20px;
+}
+
+.profile-photo {
+    width: 25%;
+    border-radius: 10px;
+    box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease-in-out, filter 0.3s ease-in-out;
+    cursor: pointer; /* Menunjukkan bahwa gambar bisa diklik */
+}
+
+/* Efek saat gambar dihover */
+.profile-photo:hover {
+    transform: scale(1.05);
+}
+
+/* Efek saat gambar ditekan (klik) */
+.profile-photo:active {
+    transform: scale(0.95); /* Menjepit gambar sedikit saat ditekan */
+    filter: brightness(0.9); /* Mengurangi kecerahan saat gambar ditekan */
+}
+
+/* Gallery */
+.gallery-container {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.gallery-container img {
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0px 3px 7px rgba(0, 0, 0, 0.2);
+    filter: sepia(20%);
+    transition: transform 0.3s ease-in-out;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.05);
+    filter: sepia(0%);
+}
+
+/* Blog Styles */
+article {
+    background: rgba(139, 111, 71, 0.1);
+    padding: 15px;
+    margin: 15px auto;
+    border-radius: 10px;
+    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+    border-left: 5px solid #6b4f3d;
+}
+
+h3 {
+    font-size: 1.5em;
+    color: #3e3b32;
+}
+
+/* Contact Form */
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+input, textarea {
+    width: 80%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid #6b4f3d;
+    font-size: 1em;
+    background-color: #fdf6e3;
+    color: #3e3b32;
+}
+
+textarea {
+    height: 100px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    border: none;
+    border-radius: 6px;
+    background: #6b4f3d;
+    color: #fff;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+button:hover {
+    background: #8b6f47;
+}
+
+/* Footer */
+footer {
+    background: #8b6f47;
+    color: #fff;
+    padding: 15px;
+    margin-top: 30px;
+    border-top: 4px solid #6b4f3d;
+    text-align: center;
+}
+
+/* Dark Mode Styles */
+body.dark-mode {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark-mode a {
+    color: #90caf9;
+}
+
+body.dark-mode .nav-links a {
+    color: #e0e0e0;
+}
+
+body.dark-mode .gallery-item {
+    box-shadow: 0 4px 8px rgba(255,255,255,0.1);
+}
+
+body.dark-mode .mode-toggle {
+    background-color: #333;
+    color: #fff;
+}
+
+/* Style for the toggle button */
+.mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #fff;
+    border: 2px solid #ccc;
+    cursor: pointer;
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    z-index: 100;
+}
