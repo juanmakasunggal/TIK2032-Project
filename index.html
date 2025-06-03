@@ -29,9 +29,9 @@
             
             <!-- Gambar Section -->
             <div class="photo-gallery">
-                <img src="photo1.jpg" alt="Photo 1" class="profile-photo">
-                <img src="photo2.jpg" alt="Photo 2" class="profile-photo">
-                <img src="photo3.jpg" alt="Photo 3" class="profile-photo">
+                <img src="img/image4.jpg" alt="Foto 1" width="25%">
+                <img src="img/image5.jpg" alt="Foto 2" width="25%">
+                <img src="img/image6.jpg" alt="Foto 3" width="25%">
             </div>
         </section>
     </main>
@@ -39,26 +39,5 @@
     <footer>
         <p>&copy; 2025 Personal Homepage | Dibuat oleh Juan Makasunggal</p>
     </footer>
-    <script>
-    // Direct typing animation for heading
-    document.addEventListener('DOMContentLoaded', function() {
-        const heading = document.querySelector('h1');
-        if (heading) {
-            const text = heading.textContent;
-            heading.textContent = '';
-            
-            let i = 0;
-            function typeText() {
-                if (i < text.length) {
-                    heading.textContent += text.charAt(i);
-                    i++;
-                    setTimeout(typeText, 50);
-                }
-            }
-            
-            setTimeout(typeText, 500);
-        }
-    });
-</script>
 </body>
 </html>
